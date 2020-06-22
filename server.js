@@ -17,7 +17,7 @@ app.use(express.static('public'));
 app.use('/', indexRoute);
 
 dotenv.config({ path: './.env' });
-const DB = process.env.DATABASE_URL
+const DB = process.env.DATABASE_URL.replace('<password>', process.env.DATABASE_PASSWORD)
 mongoose
     .connect(DB, {
       useNewUrlParser: true,
